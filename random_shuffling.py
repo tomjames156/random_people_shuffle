@@ -43,7 +43,7 @@ def shuffle_people(people, grouping):
         new_people.append(random_person) # add a random person to my new people list 
         del people[current_index]# delete the person from the initial list
 
-    print(new_people)
+    # print(new_people)
         
     for number in range(len(grouping)): # add  emanpty list to represent each group
         groups.append([])
@@ -56,9 +56,12 @@ def shuffle_people(people, grouping):
                 sys.exit()
             groups[index].append(new_person)
 
-    if (len(new_people) > 0):
-        print(f"{len(new_people)} person(s); {(list_title_string(new_people))} do not belong to any group")
+    parent_list_len = len(new_people)    
+    if parent_list_len > 1:
+        print(f"{parent_list_len} people; {(list_title_string(new_people))} do not belong to any group")
+    elif parent_list_len == 1:
+        print(f"{parent_list_len} person; {(list_title_string(new_people))} does not belong to any group")
  
     return groups
 
-print(shuffle_people(['Chizzy', 'Jane', 'John', 'Frodo', 'Kim'], [2, 2]))
+print(shuffle_people(['Chizzy', 'Jane', 'John', 'Frodo', 'Kim'], [2, 1, 2]))
